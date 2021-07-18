@@ -1,0 +1,43 @@
+.base {
+  border-radius: 11px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.17);
+  background-color: var(--white);
+}
+
+.input-group-text {
+  background-color: unset !important;
+  border-color: #0dcdc0 !important;
+}
+
+.form-control {
+  border-color: #0dcdc0 !important;
+}
+
+.form-control:focus {
+  color: #495057;
+  background-color: #fff;
+  border-color: #0dcdc0 !important;
+  outline: 0;
+  box-shadow: unset;
+}
+
+input {
+  font-size: 20px;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: black;
+  opacity: 1; /* Firefox */
+}
+
+.data-description {
+  font-size: 24px !important;
+}
+
+span {
+  font-size: 24px !important;
+}
+
+.table-name {
+  font-size: 24px !important;
+}

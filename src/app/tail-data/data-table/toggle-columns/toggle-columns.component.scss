@@ -1,0 +1,64 @@
+.modal-content {
+  width: 28vw !important;
+}
+
+::ng-deep .modal .modal-side.modal-top-left {
+  top: 8vw !important;
+  left: 10px;
+  width: 28vw !important;
+}
+
+.reset-btn {
+  font-size: 20px !important;
+  color: #0dcdc0 !important;
+  text-decoration: underline !important;
+}
+
+.actions-footer {
+  background-color: #0a2463;
+}
+
+.apply-btn {
+  width: 160px;
+  padding: 5px;
+  display: flex !important;
+  justify-content: center !important;
+  border-radius: 5px;
+  border: solid 1px #0dcdc0;
+  background-color: #0dcdc0;
+  color: black !important;
+  font-size: 20px !important;
+}
+
+:host ::ng-deep mdb-checkbox label {
+  font-size: 20px !important;
+  color: #0dcdc0;
+}
+
+:host ::ng-deep mdb-checkbox.checkbox-selected-filled [type="checkbox"][class*='filled-in']:checked+label:after {
+  border-color: #0dcdc0;
+  background-color: #0dcdc0;
+  height: 24px;
+  width: 24px;
+  color: transparent;
+}
+
+:host ::ng-deep .form-check-input[type=checkbox].filled-in:not(:checked)+label:after, label.btn input[type=checkbox].filled-in:not(:checked)+label:after {
+  height: 24px;
+  width: 24px;
+  background-color: transparent;
+  border: 2px solid #0dcdc0;
+}
+
+:host ::ng-deep .form-check-input[type=checkbox].filled-in:checked+label:before, label.btn input[type=checkbox].filled-in:checked+label:before {
+  border-top: 2px solid transparent;
+  border-left: 2px solid transparent;
+  border-right: 2px solid transparent;
+  border-bottom: 2px solid transparent;
+}
+
+
+.modal-footer {
+  border-bottom-right-radius: unset;
+  border-bottom-left-radius: unset;
+}

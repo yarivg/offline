@@ -1,0 +1,49 @@
+<app-search-bar (searchText$)="searchText($event)"></app-search-bar>
+
+<div class="row d-flex justify-content-between mt-3">
+  <div class="col-md-4 d-flex justify-content-start">
+    <h2 class="table-name">{{title}}</h2>
+  </div>
+  <div class="col-md-3 d-flex justify-content-end">
+    <a mdbWavesEffect class="toggle-columns-btn" (click)="toggleColumns()">מה להראות בטבלה?</a>
+  </div>
+</div>
+
+<div class="row mt-3">
+  <div class="col-md-12 px-0">
+    <table mdbTable #tableEl="mdbTable" class="z-depth-1 table-striped w-auto table-bordered table-responsive w-auto"
+           id="myTable">
+      <thead class="table-head">
+      <tr>
+        <th *ngFor="let head of tableHeadElements; let i = index" scope="col" [ngClass]="{'d-none': head.hidden}">
+          <div class="d-flex justify-content-between align-items-center">
+            <span>{{head.description}}</span>
+            <mdb-icon fas icon="sort-down"></mdb-icon>
+          </div>
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+      <ng-content>
+      </ng-content>
+      </tbody>
+    </table>
+    <div class="row d-flex align-items-center px-0 mx-0" style="background-color: #2a3d6b; color: white">
+      <div class="col-md-11">
+        <span style="font-size: 20px"
+              class="d-inline-flex; text-white">מספר רשומות: {{mdbTable.getDataSource().length}}</span>
+        <span style="font-size: 20px" class="d-inline-flex px-3 text-white"> | </span>
+        <span style="font-size: 20px" class="d-inline-flex text-white"
+              *ngIf="mdbTablePagination">עמוד {{mdbTablePagination.activePageNumber}}
+          מתוך  {{mdbTablePagination.calculateHowManyPagesShouldBe()}}</span>
+        <mdb-table-pagination class="d-inline-flex" [tableEl]="tableEl" [searchDataSource]="elements"
+                              [hideDescription]="true"></mdb-table-pagination>
+      </div>
+      <div class="col-md-1 d-flex justify-content-between">
+        <mdb-icon fas icon="print" size="lg" class="px-2" style="color: #0dcdc0"></mdb-icon>
+        <mdb-icon fas icon="file-excel" size="lg" class="px-2" style="color: #0dcdc0"
+                  (click)="exportExcel()"></mdb-icon>
+      </div>
+    </div>
+  </div>
+</div>
