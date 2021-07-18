@@ -1,0 +1,20 @@
+<div class="modal-content" dir="rtl">
+  <div class="modal-body overflow-auto" style="max-height: 72vh">
+    <div class="row">
+      <form [formGroup]="form">
+        <div class="col-md-12 py-3" *ngFor="let head of tableHeadElements; let i = index">
+          <mdb-checkbox class="checkbox-selected-filled" [indeterminate]="false"
+                        [filledIn]="true"
+                        [formControlName]="head.index"
+                        [checkboxPosition]="'right'">{{head.description}}</mdb-checkbox>
+        </div>
+    </form>
+  </div>
+</div>
+<div class="modal-footer actions-footer">
+  <div class="d-flex justify-content-between w-100 align-items-center">
+    <a class="reset-btn" mdbWavesEffect (click)="resetForm()">אני רוצה להתחיל מחדש</a>
+    <a class="apply-btn" mdbWavesEffect (click)="applyToggleColumns()">אפשר להתקדם</a>
+  </div>
+</div>
+</div>

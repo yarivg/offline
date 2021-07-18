@@ -1,0 +1,26 @@
+<div class="row base d-flex align-items-center justify-content-between">
+  <div class="col-md-4 d-inline-flex">
+    <h2 class="table-name">{{tailNumber}}</h2>
+    <h2 class="px-3 table-name">|</h2>
+    <h2 class="table-name">{{squad}}</h2>
+    <h2 class="px-3 table-name">|</h2>
+    <h2 class="table-name">{{workCenter}}</h2>
+  </div>
+  <div class="col-md-4 ml-2">
+    <div class="row d-flex justify-content-end align-items-center">
+      <div class="col-md-10 mt-2" dir="ltr">
+        <label class="sr-only" for="inlineFormInputGroup">Search</label>
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text">
+              <mdb-icon fas icon="search" style="color: #0dcdc0" size="lg"></mdb-icon>
+            </div>
+          </div>
+          <input mdbInput type="text" dir="rtl" class="form-control py-0" id="inlineFormInputGroup"
+                 placeholder="חיפוש חופשי" [(ngModel)]="searchText">
+        </div>
+      </div>
+      <mdb-icon class="col-md-1 px-2" fas icon="filter" style="color: #0dcdc0" size="lg"></mdb-icon>
+    </div>
+  </div>
+</div>
