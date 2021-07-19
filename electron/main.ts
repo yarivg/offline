@@ -1,7 +1,6 @@
-import {app, BrowserWindow, ipcMain, IpcMessageEvent, nativeImage, NativeImage } from 'electron';
+import {app, BrowserWindow, ipcMain, nativeImage, NativeImage} from 'electron';
 import * as path from 'path';
 import * as url from 'url';
-import * as fs from 'fs';
 import * as os from 'os';
 import * as child_process from 'child_process';
 
@@ -20,7 +19,6 @@ function createWindow() {
 
   win = new BrowserWindow({
     width: 1400,
-    // kiosk: true,
     height: 800,
     title: 'NetekTron',
     kiosk: false,
@@ -29,7 +27,10 @@ function createWindow() {
     icon: image,
     webPreferences: {
       nodeIntegration: true,
-      backgroundThrottling: false
+      nodeIntegrationInWorker: true,
+      backgroundThrottling: false,
+      enableRemoteModule: true,
+      contextIsolation: false
     }
   });
 
@@ -43,7 +44,7 @@ function createWindow() {
     })
   );
 
-  // win.webContents.openDevTools();
+  win.webContents.openDevTools();
 
   win.on('closed', () => {
     win = null;

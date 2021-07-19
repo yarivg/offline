@@ -16,11 +16,13 @@ export class AppElectronService {
   }
 
   showHostname(): void {
-    alert(this.electronService.ipcRenderer);
-    this.electronService.ipcRenderer.on('hostname', (event, args) => {
-      alert(args);
-    });
-    this.electronService.ipcRenderer.send('hostname', []);
+    if (this.electronService.isElectronApp) {
+      alert(this.electronService.ipcRenderer);
+      this.electronService.ipcRenderer.on('hostname', (event, args) => {
+        alert(args);
+      });
+      this.electronService.ipcRenderer.send('hostname', []);
+    }
   }
 
   openCalculator(): void {

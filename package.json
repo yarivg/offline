@@ -1,5 +1,6 @@
 {
   "name": "netek",
+  "main": "electron/dist/main.js",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -30,6 +31,7 @@
     "anypicker": "^2.0.9",
     "bootstrap": "^4.5.0",
     "electron-packager": "^15.3.0",
+    "electron-wix-msi": "^3.2.0",
     "file-saver": "^2.0.2",
     "idb": "^5.0.3",
     "jquery": "^3.5.1",

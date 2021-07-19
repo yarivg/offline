@@ -4,6 +4,8 @@ import {IdbService} from './services/idb.service';
 import {ExcelService} from './services/excel.service';
 import {WebSocketService} from './services/web-socket.service';
 import {AppElectronService} from './services/app-electron.service';
+import {ElectronService} from 'ngx-electron';
+
 declare var $: any;
 
 export interface User {
@@ -21,8 +23,8 @@ export interface User {
 export class AppComponent implements OnInit {
   title = 'Sample App';
   hide = false;
-  @ViewChild(MdbTablePaginationComponent, { static: true }) mdbTablePagination: MdbTablePaginationComponent;
-  @ViewChild(MdbTableDirective, { static: true }) mdbTable: MdbTableDirective;
+  @ViewChild(MdbTablePaginationComponent, {static: true}) mdbTablePagination: MdbTablePaginationComponent;
+  @ViewChild(MdbTableDirective, {static: true}) mdbTable: MdbTableDirective;
   elements: User[] = [];
   previous: User[] = [];
   headElements = ['ID', 'First', 'Last', 'Handle'];
@@ -32,31 +34,14 @@ export class AppComponent implements OnInit {
               private excelService: ExcelService,
               private toastService: ToastService,
               private webSocketService: WebSocketService,
-              private appElectronService: AppElectronService) {
+              private appElectronService: AppElectronService,
+              private electronService: ElectronService) {
     // this.idbService.connectToIDB();
   }
 
   ngOnInit() {
     this.appElectronService.showHostname();
-    // this.webSocketService.connect();
-    // this.webSocketService.messageSubject.subscribe(message => {
-    //   this.toastService.success(message);
-    // });
-    // for (let i = 1; i <= 15; i++) {
-    //   const user: User = {id: i.toString(), first: 'User ' + i, last: 'Name ' + i, handle: 'Handle ' + i};
-    //   this.elements.push(user);
-    //   this.idbService.addItem('Users', user);
-    // }
-    //
-    // this.idbService.getAllData('Users').subscribe(data => {
-    //   console.log(data);
-    // });
-    //
-    // this.mdbTable.setDataSource(this.elements);
-    // this.elements = this.mdbTable.getDataSource();
-    // this.previous = this.mdbTable.getDataSource();
   }
-
 
   showHide(): void {
     this.hide = !this.hide;
