@@ -41,6 +41,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.appElectronService.showHostname();
+    this.webSocketService.connect();
   }
 
   showHide(): void {

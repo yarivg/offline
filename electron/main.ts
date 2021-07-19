@@ -1,10 +1,11 @@
-import {app, BrowserWindow, ipcMain, nativeImage, NativeImage} from 'electron';
+import {app, Tray, BrowserWindow, ipcMain, nativeImage, NativeImage, Menu} from 'electron';
 import * as path from 'path';
 import * as url from 'url';
 import * as os from 'os';
 import * as child_process from 'child_process';
 
 let win: BrowserWindow;
+let tray = null;
 
 app.on('ready', createWindow);
 
@@ -12,6 +13,33 @@ app.on('activate', () => {
   if (win === null) {
     createWindow();
   }
+});
+
+function createTray() {
+  if (tray == null) {
+    tray = new Tray(path.join(__dirname, `/../../dist/netek/assets/offline.jpg`));
+    const contextMenu = Menu.buildFromTemplate([
+      {
+        label: 'תביא זריז',
+        click: () => {
+          if (win === null) {
+            createWindow();
+          } else {
+            win.focus();
+          }
+        }
+      }
+    ]);
+    tray.setContextMenu(contextMenu);
+  }
+}
+
+app.whenReady().then(() => {
+  createTray();
+});
+
+app.on('window-all-closed', () => {
+  createTray();
 });
 
 function createWindow() {
@@ -50,12 +78,6 @@ function createWindow() {
     win = null;
   });
 }
-
-app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') {
-    app.quit();
-  }
-});
 
 ipcMain.on('hostname', (event, messageFromAngular) => {
   event.sender.send('hostname', os.hostname());
