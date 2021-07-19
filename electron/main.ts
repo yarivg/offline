@@ -7,7 +7,7 @@ import * as child_process from 'child_process';
 let win: BrowserWindow;
 let tray = null;
 
-app.on('ready', createWindow);
+app.on('ready', initialize);
 
 app.on('activate', () => {
   if (win === null) {
@@ -15,32 +15,34 @@ app.on('activate', () => {
   }
 });
 
-function createTray() {
-  if (tray == null) {
-    tray = new Tray(path.join(__dirname, `/../../dist/netek/assets/offline.jpg`));
-    const contextMenu = Menu.buildFromTemplate([
-      {
-        label: 'תביא זריז',
-        click: () => {
-          if (win === null) {
-            createWindow();
-          } else {
-            win.focus();
-          }
-        }
-      }
-    ]);
-    tray.setContextMenu(contextMenu);
-  }
+function initialize() {
+  createWindow();
+  createTray();
 }
 
-app.whenReady().then(() => {
-  createTray();
-});
+function ignoreQuitting(event: Event) {
+  event.preventDefault();
+  win.minimize();
+  win.setSkipTaskbar(true);
+}
 
-app.on('window-all-closed', () => {
-  createTray();
-});
+function reopenApp() {
+  win.focus();
+  win.setSkipTaskbar(false);
+}
+
+function createTray() {
+  tray = new Tray(path.join(__dirname, `/../../dist/netek/assets/offline.jpg`));
+  const contextMenu = Menu.buildFromTemplate([
+    {
+      label: 'פתיחת נתק',
+      click: () => {
+        reopenApp();
+      }
+    }
+  ]);
+  tray.setContextMenu(contextMenu);
+}
 
 function createWindow() {
   const image = getIconImage();
@@ -61,6 +63,8 @@ function createWindow() {
       contextIsolation: false
     }
   });
+
+  win.on('close', (event) => ignoreQuitting(event));
 
   win.setMenu(null);
 
