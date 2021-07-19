@@ -6,10 +6,10 @@ import {Component, EventEmitter, HostListener, Input, OnInit, Output} from '@ang
   styleUrls: ['./search-bar.component.scss']
 })
 export class SearchBarComponent implements OnInit {
-  @Input() tailNumber = 'זנב 123';
-  @Input() squad = 'טייסת 101';
-  @Input() workCenter = 'דת"ק 11';
-  @Output() searchText$: EventEmitter<string> = new EventEmitter<string>()
+  @Input() tailNumber = 'אופק';
+  @Input() squad = 'מתן';
+  @Input() workCenter = 'להבה';
+  @Output() searchText$: EventEmitter<string> = new EventEmitter<string>();
   searchText = '';
 
   constructor() {

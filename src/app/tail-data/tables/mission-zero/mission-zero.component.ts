@@ -8,12 +8,10 @@ import {GenericTableComponent} from '../../data-table/generic-table.component';
   styleUrls: ['./mission-zero.component.scss']
 })
 export class MissionZeroComponent extends GenericTableComponent implements OnInit {
-  headElements: string [] = ['מספר פ"מ', 'TMS', 'זנב', 'מערכות תלויות', 'קוד נק\' תליה',
-    'אייקון מתלה','יצרן מתלה','סידורי מתלה בפועל','אייקון מתלה מרובה',
-    'יצרן מתלה מרובה','סידורי מתלה מרובה בפועל','מיקום מערכת',
-    'יצרן מערכת','תאור מערכת','סידורי מערכת'];
+  headElements: string [] = ['שם', 'גיל', 'עיר', 'חיה אהובה', 'מאכל אהוב', 'שפה אהובה', 'אלגוריתם אהוב'
+    , 'משכורת ראויה'];
 
-  title = 'פ"מ 0';
+  title = 'האקתון';
 
   @ViewChild('dataTable', {static: true}) dataTable: DataTableComponent;
 
