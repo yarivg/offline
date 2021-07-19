@@ -8,6 +8,7 @@ import {environment} from '../environments/environment';
 import {RouterModule, Routes} from '@angular/router';
 import {TailDataModule} from './tail-data/tail-data.module';
 import {PickTailsComponent} from './pick-tails/pick-tails.component';
+import {NgxElectronModule} from 'ngx-electron';
 
 const routes: Routes = [
   { path: '', redirectTo: 'pick-tails', pathMatch: 'full'},
@@ -25,6 +26,7 @@ const routes: Routes = [
     BrowserAnimationsModule,
     MDBBootstrapModulesPro.forRoot(),
     ToastModule.forRoot(),
+    NgxElectronModule,
     ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
     RouterModule.forRoot(routes),
     TailDataModule

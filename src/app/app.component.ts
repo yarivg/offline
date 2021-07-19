@@ -1,8 +1,9 @@
 import {AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild} from '@angular/core';
-import {MdbTableDirective, MdbTablePaginationComponent, ToastService} from "ng-uikit-pro-standard";
-import {IdbService} from "./services/idb.service";
-import {ExcelService} from "./services/excel.service";
-import {WebSocketService} from "./services/web-socket.service";
+import {MdbTableDirective, MdbTablePaginationComponent, ToastService} from 'ng-uikit-pro-standard';
+import {IdbService} from './services/idb.service';
+import {ExcelService} from './services/excel.service';
+import {WebSocketService} from './services/web-socket.service';
+import {AppElectronService} from './services/app-electron.service';
 declare var $: any;
 
 export interface User {
@@ -21,20 +22,22 @@ export class AppComponent implements OnInit {
   title = 'Sample App';
   hide = false;
   @ViewChild(MdbTablePaginationComponent, { static: true }) mdbTablePagination: MdbTablePaginationComponent;
-  @ViewChild(MdbTableDirective, { static: true }) mdbTable: MdbTableDirective
+  @ViewChild(MdbTableDirective, { static: true }) mdbTable: MdbTableDirective;
   elements: User[] = [];
   previous: User[] = [];
   headElements = ['ID', 'First', 'Last', 'Handle'];
 
   constructor(private cdRef: ChangeDetectorRef,
               private idbService: IdbService,
-              private excelService:ExcelService,
+              private excelService: ExcelService,
               private toastService: ToastService,
-              private webSocketService: WebSocketService) {
+              private webSocketService: WebSocketService,
+              private appElectronService: AppElectronService) {
     // this.idbService.connectToIDB();
   }
 
   ngOnInit() {
+    this.appElectronService.showHostname();
     // this.webSocketService.connect();
     // this.webSocketService.messageSubject.subscribe(message => {
     //   this.toastService.success(message);

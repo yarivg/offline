@@ -8,7 +8,10 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "local-pwa": "ng build --prod && http-server -p 8081 -c-1 dist/netek"
+    "local-pwa": "ng build --prod && http-server -p 8081 -c-1 dist/netek",
+    "electron": "ng build --base-href ./ && tsc --p electron && electron electron/dist/main.js",
+    "build-electron": "electron-packager . --out=dist/win --platform=win32 --arch=x64 --icon=assets/favicon.ico --asar --overwrite",
+    "build-installer": "node build_installer.js"
   },
   "private": true,
   "dependencies": {
@@ -26,11 +29,13 @@
     "@fortawesome/fontawesome-free": "^5.13.0",
     "anypicker": "^2.0.9",
     "bootstrap": "^4.5.0",
+    "electron-packager": "^15.3.0",
     "file-saver": "^2.0.2",
     "idb": "^5.0.3",
     "jquery": "^3.5.1",
     "net": "^1.0.2",
     "ng-uikit-pro-standard": "file:ng-uikit-pro-standard-9.3.0.tgz",
+    "ngx-electron": "^2.2.0",
     "rxjs": "~6.5.4",
     "sockjs-client": "^1.4.0",
     "stompjs": "^2.3.3",
@@ -48,6 +53,7 @@
     "@types/sockjs-client": "^1.1.1",
     "@types/stompjs": "^2.3.4",
     "codelyzer": "^5.1.2",
+    "electron": "^13.1.7",
     "http-server": "^0.12.3",
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~4.2.1",
